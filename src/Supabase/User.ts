@@ -22,7 +22,7 @@ class User {
 
 
   LogoutUser=async():Promise<void>=>{
-    const responce=Instance.auth.signOut()
+    const responce=await Instance.auth.signOut()
   } 
 
   GetUser=async ():Promise<userresponce|null>=>{

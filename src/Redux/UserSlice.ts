@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { User as userresponce } from '@supabase/supabase-js'
-export interface CounterState {
+export interface initialStateinterface {
   userdata: null | userresponce
   islogin:boolean
 }
 
-const initialState: CounterState = {
+const initialState: initialStateinterface = {
   userdata:null,
   islogin:false
 
 }
 
-export const counterSlice = createSlice({
+export const UserSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {       
@@ -25,6 +25,6 @@ export const counterSlice = createSlice({
   },
 })
 
-export const { setUserdata, setIslogin } = counterSlice.actions
+export const { setUserdata, setIslogin } = UserSlice.actions
 
-export default counterSlice.reducer
+export default UserSlice.reducer

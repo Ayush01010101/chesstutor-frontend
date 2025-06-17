@@ -1,30 +1,34 @@
 import type { ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { setUserdata } from "../Redux/UserSlice";
-
 import { useState } from "react";
+import { useEffect } from "react";
 import User from "../Supabase/User";
-const AuthWrapper = ({children}:{children:ReactNode}):ReactNode => {
-    const dispatch=useDispatch()
+const AuthWrapper =  ({children}:{children:ReactNode}):ReactNode => {
+    const dispatch=useDispatch()    
     const [loading,setLoading]=useState(true)
-    User.GetUser()
-    .then((userdata)=>{
-        if(userdata){
-            dispatch(setUserdata(userdata))
+    useEffect(()=>{
+        User.GetUser()
+        .then((userdata)=>{
+            if(userdata){
+                dispatch(setUserdata(userdata))
+                console.log(userdata)
+    
+            }
+            setLoading(false)
+        })
+        .catch(()=>{
+            setLoading(false)
+        })
 
-        }
-        setLoading(false)
-    })
-    .catch(()=>{
-        setLoading(false)
-    })
+    },[])
     
 
     return (
         <>  
         {loading?<div className="text-4xl">Loading...</div>:children}
         
-        </>
+        </> 
     )
  
 }

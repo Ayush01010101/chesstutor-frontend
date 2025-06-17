@@ -1,10 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
 import { ChevronRight, Mic, Upload, LineChart, Book } from 'lucide-react';
 import { GreenGrediantButton } from './CustomButtons/GreenGrediantButton';
 import { BlackAlphaButton } from './CustomButtons/BlackAlphaButton';
+import Login from './Login';
+import LoginClick from '../HandleClickFunction/LoginClick';
 const Landing: React.FC = () => {
+  const [isOpen,setIsopen]=useState<boolean>(false)
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-black  ">
+
+      {isOpen && <Login 
+      isOpen={isOpen} 
+      setIsopen={setIsopen}
+      />}
       {/* Animated background */}
       <div className="absolute inset-0 z-0 ">
         <div className="absolute  top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full filter blur-3xl animate-blob"></div>
@@ -27,15 +36,16 @@ const Landing: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <GreenGrediantButton
+
               text={<>Start Now  <ChevronRight className="ml-2" size={20} /></>}
               handleclick={()=>{
-                
+               setIsopen(true)
               }}
               />
               
               <BlackAlphaButton
               text={<>Learn More <Book className='ml-2' size={20}/></>}
-              handleclick={()=>{}}
+              handleclick={()=>{}}  
               
               />
             </div>
