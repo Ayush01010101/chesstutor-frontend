@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useDispatch } from "react-redux";
-import { setUserdata } from "../Redux/UserSlice";
+import { setIslogin, setUserdata } from "../Redux/UserSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import User from "../Supabase/User";
@@ -12,8 +12,9 @@ const AuthWrapper =  ({children}:{children:ReactNode}):ReactNode => {
         .then((userdata)=>{
             if(userdata){
                 dispatch(setUserdata(userdata))
-                console.log(userdata)
-    
+                dispatch(setIslogin(true))  
+                
+                    
             }
             setLoading(false)
         })

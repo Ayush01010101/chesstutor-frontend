@@ -1,14 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Chess Tutor</title>
+    <style>
+      #portal {
+        position: relative;
+        z-index: 100;
+      }
+      #root {
+        position: relative;
+        z-index: 10;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
     <div id="portal"></div>
+    <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

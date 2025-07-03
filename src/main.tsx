@@ -4,6 +4,7 @@ import store from './Redux/Store.ts'
 import './index.css'
 import App from './App.tsx'
 
+
 createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
         <App />

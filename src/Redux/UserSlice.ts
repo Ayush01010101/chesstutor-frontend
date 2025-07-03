@@ -8,7 +8,7 @@ export interface initialStateinterface {
 
 const initialState: initialStateinterface = {
   userdata:null,
-  islogin:false
+  islogin:true,
 
 }
 

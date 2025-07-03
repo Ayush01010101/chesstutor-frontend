@@ -12,13 +12,7 @@ function App() {
   {
     path: "/",
     element: 
-    
       <Homepage/>
-
-
-    
-    
-    
   },
   {
     path:"/dashboard",
@@ -28,9 +22,9 @@ function App() {
 
   return (
     <>
-    <AuthWrapper>
+  
       <RouterProvider router={router}/>
-          </AuthWrapper>
+          
     </>
   )
 }

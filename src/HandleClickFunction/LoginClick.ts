@@ -7,7 +7,7 @@ const LoginClick=async (email:string):Promise<  AuthResponse | null  > =>{
     return user
 
 
-   
+
 }
 
 export default LoginClick

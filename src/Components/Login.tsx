@@ -13,21 +13,12 @@ const Login = ({ isOpen, setIsopen }: LoginModalProps): ReactNode => {
   const [isLoading, setIsLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
 
-  const handleGoogleLogin = () => {};
+  const handleGoogleLogin = () => { };
 
   return (
     isOpen &&
-    createPortal(
-      <>
-        <div
-          onClick={() => {
-            if(!emailSent){
-              setIsopen(!isOpen);
-            }
-          }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-        >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm " />
+      createPortal(
+           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm " >
 
           <div
             onClick={(e) => {
@@ -165,10 +156,10 @@ const Login = ({ isOpen, setIsopen }: LoginModalProps): ReactNode => {
             {/* Footer */}
 
           </div>
-        </div>
-      </>,
-      document.getElementById("portal") as HTMLDivElement
-    )
+        </div >
+
+        ,document.querySelector("#portal") as HTMLDivElement)     
+    
   );
 };
 
