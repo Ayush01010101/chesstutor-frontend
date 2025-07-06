@@ -8,30 +8,30 @@ import Analysis from "../Components/Play";
 
 
 
-    
-const Homepage=()=>{
-    
-    const userdata=useGetUserData()
-    
-    // console.log(userdata)
-    return (    
-        <>  
-            {userdata.islogin?
 
-            <>
-                <Navbar/>
-                
-                <Analysis/>
-            </>
-            :
-                <>
+const Homepage = () => {
 
-                
-                <Landing/>
-                </>
-}
+  const userdata = useGetUserData()
+
+  // console.log(userdata)
+  return (
+    <>
+      {userdata.islogin ?
+
+        <>
+          <Navbar />
+
+          <Analysis />
         </>
-    )
+        :
+        <>
+
+
+          <Landing />
+        </>
+      }
+    </>
+  )
 }
 
 export default Homepage 
