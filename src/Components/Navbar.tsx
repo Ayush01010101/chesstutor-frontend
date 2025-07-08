@@ -1,4 +1,4 @@
-import { Settings,User, Zap, Target } from 'lucide-react';
+import { Settings, User, Zap, Target } from 'lucide-react';
 
 
 const Navbar: React.FC = () => {
@@ -14,16 +14,16 @@ const Navbar: React.FC = () => {
                 </div>
                 <span className="text-white text-xl font-bold">AIChessTutor</span>
               </div>
-              
-             
+
+
             </div>
-                 <nav className="hidden md:flex items-center space-x-6 gap-10">
-              
-                <span className="text-emerald-400 flex items-center space-x-2 cursor-pointer">
-                  <Target size={18} />
-                  <span>Play</span>
-                </span>
-              </nav>
+            <nav className="hidden md:flex items-center space-x-6 gap-10">
+
+              <span className="text-emerald-400 flex items-center space-x-2 cursor-pointer">
+                <Target size={18} />
+                <span>Play</span>
+              </span>
+            </nav>
             <div className="flex items-center space-x-4">
               <button className="text-gray-300 hover:text-white transition-colors">
                 <Settings size={20} />
@@ -36,8 +36,8 @@ const Navbar: React.FC = () => {
         </div>
       </header>
 
-    
-   
+
+
     </>
   );
 };

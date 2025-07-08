@@ -1,0 +1,15 @@
+@keyframes up-to-down-animation  {
+    0%{
+  top:-5rem;
+  
+}
+100%{
+top:1;
+}
+}
+
+.up-to-down{
+  top:1;
+  animation:up-to-down-animation ease-in ;
+  animation-duration:0.4s;
+}

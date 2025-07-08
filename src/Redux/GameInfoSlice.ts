@@ -15,4 +15,3 @@ const GameInfoSlice = createSlice({
 const gameinfoobject = GameInfoSlice.reducer;
 export { gameinfoobject }
 export const { insertgame } = GameInfoSlice.actions
-

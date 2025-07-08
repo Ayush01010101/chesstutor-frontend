@@ -31,7 +31,7 @@ const LinkChessaccount = ({ funx }: { funx: (username: string) => Promise<void> 
             onClick={() => {
               funx(accountValue)
             }}
-            className={`w-full transition-all duration-300 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg flex items-center justify-center text-sm ${!accountValue ? 'cursor-not-allowed bg-gray-600' : 'bg-green-600 cursor-pointer'} `}
+            className={`w-full transition-all duration-300 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg flex items-center justify-center text-sm ${!accountValue || accountValue.length <= 3 ? 'cursor-not-allowed bg-gray-600' : 'bg-green-600 cursor-pointer'} `}
           >
             Connect
 
