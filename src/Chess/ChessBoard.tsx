@@ -6,7 +6,7 @@ const Board = (): ReactNode => {
     const windowWidth = window.innerWidth;
     if (windowWidth < 480) return 355; //mobile
     if (windowWidth < 768) return 400;               //tablets
-    return 600;                                  //desktop or big screens
+    return 740;                                  //desktop or big screens
   }
   return (
     <div>

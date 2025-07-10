@@ -6,7 +6,6 @@ const GameInfoSlice = createSlice({
     gameobject: {}
   },
   reducers: {
-
     insertgame: (state, action) => {
       state.gameobject = action.payload
     }

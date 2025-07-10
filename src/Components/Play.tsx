@@ -6,18 +6,20 @@ import { LinkChessaccount } from "./LinkChesscom";
 import { useState } from "react";
 import { GamesinfoPopup } from './ui/GamesinfoPopup';
 import { User } from 'lucide-react';
+import SelectedgamePGNPopup from './ui/SelectedgamePGNPopup';
 const Play = (): ReactNode => {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
   const [games, setGames] = useState([])
-  let accountname: string = "";
+  const [selectedgame, setSelectedgame] = useState<boolean>(true)
+  const [accountname, setAccountname] = useState<string>("")
   const connectClick = async (username: string) => {
     const date = new Date()
     if (!username) {
       //show popup with error
       return;
     }
-    accountname = accountname.concat("" + username)
+    setAccountname(username)
     username.trim()
     try {
       const responce = await axios.get(`https://api.chess.com/pub/player/${username}/games/${date.getFullYear()}/${date.getMonth() + 1 < 10 ? ('0' + (date.getMonth() + 1)) : date.getMonth() + 1}`)
@@ -34,18 +36,26 @@ const Play = (): ReactNode => {
         const gameslength = responce.data.games.length
         const limitresponce = responce.data.games.slice(gameslength - 10, gameslength)
         setGames(limitresponce.reverse())
-        console.log(limitresponce)
+        document.body.style.overflow = 'hidden'
+
         setLoading(true)
       }
 
     } catch {
     }
+    console.log(accountname, 'accountname')
   }
   return (
     <>
 
-      <div className="min-h-screen  bg-black/97 p-7  ">
+      <div className="min-h-screen  bg-gray-900/90 p-7  ">
+        {selectedgame && <SelectedgamePGNPopup
+
+          setstate={setSelectedgame} />
+
+        }
         {error && <div className=' w-full flex justify-evenly top-0  items-center  fixed up-to-down  z-100'>
+
           <Alert severity='error' className='w-[40%] flex justify-center items-center  font-bold text-2xl' >
 
 
@@ -88,6 +98,7 @@ const Play = (): ReactNode => {
             <GamesinfoPopup
               games={games}
               username={accountname}
+              setPopup={setSelectedgame}
               setLoading={setLoading}
               loading={loading}
             />}

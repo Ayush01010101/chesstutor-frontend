@@ -4,7 +4,7 @@ import { Settings, User, Zap, Target } from 'lucide-react';
 const Navbar: React.FC = () => {
   return (
     <>
-      <header className="relative z-20 bg-black/97 backdrop-blur-lg border-b  border-white/10">
+      <header className="relative z-20 bg-gray-900/90 backdrop-blur-lg border-b  border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-6">
