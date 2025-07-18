@@ -22,6 +22,7 @@ const Homepage = () => {
           <Navbar />
 
           <Analysis />
+
         </>
         :
         <>

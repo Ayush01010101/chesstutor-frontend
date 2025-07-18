@@ -1,6 +1,5 @@
 import axios from 'axios'
 import type { ReactNode } from "react";
-import Board from "../Chess/ChessBoard";
 import Alert from '@mui/material/Alert'
 import { LinkChessaccount } from "./LinkChesscom";
 import { useState } from "react";
@@ -11,12 +10,16 @@ const Play = (): ReactNode => {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
   const [games, setGames] = useState([])
-  const [selectedgame, setSelectedgame] = useState<boolean>(true)
+  const [selectedgame, setSelectedgame] = useState<boolean>(false)
   const [accountname, setAccountname] = useState<string>("")
   const connectClick = async (username: string) => {
     const date = new Date()
     if (!username) {
-      //show popup with error
+
+      setError('Invalid Username'.toUpperCase())
+      setTimeout(() => {
+        setError('')
+      }, 3000)
       return;
     }
     setAccountname(username)
@@ -50,14 +53,13 @@ const Play = (): ReactNode => {
 
       <div className="min-h-screen  bg-gray-900/90 p-7  ">
         {selectedgame && <SelectedgamePGNPopup
-
+          accountname={accountname}
           setstate={setSelectedgame} />
 
         }
         {error && <div className=' w-full flex justify-evenly top-0  items-center  fixed up-to-down  z-100'>
 
           <Alert severity='error' className='w-[40%] flex justify-center items-center  font-bold text-2xl' >
-
 
             <div className='flex justify-evenly items-center gap-3'>
               {error}
@@ -79,12 +81,11 @@ const Play = (): ReactNode => {
 
 
         <div className="flex flex-wrap w-full md:justify-evenly justify-center gap-5 md:gap-10">
-
-
           <div className="flex justify-center flex-wrap gap-7 items-center  md:w-1/2 p-4 bg-gray-900/50 rounded-2xl">
-            <Board />
-
+            {//  <Board />
+            }
           </div>
+
           <LinkChessaccount
             funx={connectClick}
 

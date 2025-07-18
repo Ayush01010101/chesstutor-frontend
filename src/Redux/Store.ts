@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './UserSlice'
 import { gameinfoobject as gameinfoobjectReducer } from './GameInfoSlice';
+import { CurrentGameReducer } from './CurrentGameSlice.ts';
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    gameinfo: gameinfoobjectReducer
+    gameinfo: gameinfoobjectReducer,
+    CurrentGameReducer
   },
 })
 

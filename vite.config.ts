@@ -4,10 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 import path from "path"
 export default defineConfig({
   plugins: [
-    react(), 
+    react(),
     tailwindcss(),
-   
-    
+
+
   ],
   resolve: {
     alias: {
@@ -17,12 +17,5 @@ export default defineConfig({
   assetsInclude: ['**/*.wasm'],
   optimizeDeps: {
     include: ['stockfish.wasm'],
-  },
-  // server: {
-    
-  //   headers: {
-  //     'Cross-Origin-Opener-Policy': 'same-origin',
-  //     'Cross-Origin-Embedder-Policy': 'require-corp',
-  //   },
-  // },
+  }
 })

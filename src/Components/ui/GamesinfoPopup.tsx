@@ -28,7 +28,7 @@ const GamesinfoPopup = ({
     createPortal(
       <div className="flex justify-center items-center w-screen   h-screen   bg-black/75  fixed inset-0 " >
 
-        <div className="relative  flex p-14  gap-9 flex-none flex-col overflow-auto items-center  bg-[#232931] h-[80%] w-[77%] md:w-[50%] rounded-2xl ">
+        <div className="relative  flex md:p-14  p-6 gap-9 flex-none flex-col overflow-auto items-center  bg-[#232931] h-[80%] w-[90%] md:w-[50%] rounded-2xl ">
 
 
           <div onClick={() => {

@@ -1,28 +1,28 @@
-import { StockfishToPGN } from "./StockFishToPGN";
+function Stockfish(fen: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const engine = new Worker("stockfish.js");
 
+    engine.onerror = (e) => {
+      reject(e);
+    };
 
-function stockfish(pgn:string) {
-  const engine = new Worker("stockfish.js");
+    engine.onmessage = (e) => {
+      const line = e.data;
 
-  engine.postMessage("uci");
-  engine.postMessage('ucinewgame');
+      if (line.includes("bestmove")) {
 
-  engine.postMessage('setoption name MultiPV value 3');
-  engine.postMessage("go depth 12");
-  
-  engine.postMessage(
-    "position fen " + "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
-  );
-  
+        engine.terminate();
+        resolve(e.data)
+      }
+    };
 
-
-  engine.onmessage = (e) => {
-    const check=e.data.includes("bestmove")
-    if(check){  
-      
-
-    }
-  };
+    engine.postMessage("uci");
+    engine.postMessage("ucinewgame");
+    //engine.postMessage("setoption name MultiPV value 1");
+    engine.postMessage(`position fen ${fen}`);
+    engine.postMessage("go depth 7");
+  });
 }
 
-export { stockfish };
+
+export default Stockfish;

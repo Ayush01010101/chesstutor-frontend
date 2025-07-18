@@ -31,7 +31,7 @@ const Gamecard: React.FC<chesscardpropstype> = ({ timecontrol, winner, blackname
   }
   return (
     <>
-      <div className="bg-gray-900/50 shadow-black inset-shadow-2xs hover:shadow-md shadow-s  cursor-pointer w-full hover:scale-95   transition-all duration-300 md:w-[60%] rounded-2xl  min-h-[40%]">
+      <div className="bg-gray-900/50  shadow-black inset-shadow-2xs hover:shadow-md shadow-s  cursor-pointer w-full hover:scale-95   transition-all duration-300 md:w-[60%] rounded-2xl  min-h-[40%]">
 
         <div onClick={() => {
           importgameclick()
