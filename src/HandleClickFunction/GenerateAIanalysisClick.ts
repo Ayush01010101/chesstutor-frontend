@@ -1,20 +1,16 @@
 import axios from "axios"
 import FilteredPGNParser from "@/Chess/FilteredPGNParser"
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import { insertcurrentgame, insertfilteredPGN, updatemoves } from "@/Redux/CurrentGameSlice"
-const GenerateAIanalysisClick = (userside: string, pgn: string) => {
-  const dispatch = useDispatch()
-  const movesincrement = useSelector((state: any) => state.CurrentGame?.movesincrement)
+import { insertfilteredPGN, updatemoves } from "@/Redux/CurrentGameSlice"
+const GenerateAIanalysisClick = (userside: string, pgn: string, dispatch: any) => {
   FilteredPGNParser(userside, pgn).then((res) => {
 
-    dispatch(insertcurrentgame(res))
-    dispatch(insertfilteredPGN(res))
 
     let chessgame;
 
     if (res.length > 20) {
-      chessgame = res.slice(20)
+      chessgame = res.slice(0, 21)
+      console.log(chessgame)
+      console.log('full game ', res)
       dispatch(insertfilteredPGN(res.slice(20, res.length)))
     } else {
       chessgame = res
@@ -24,10 +20,12 @@ const GenerateAIanalysisClick = (userside: string, pgn: string) => {
 
     axios.post('http://localhost:3000/api/v1/model/llama', {
       chessgame,
+
     },
+      { timeout: 60000 }
 
     ).then((res) => {
-      dispatch(updatemoves(movesincrement + 20))
+      dispatch(updatemoves(20))
       console.dir(res.data)
     }).catch(() => {
     })

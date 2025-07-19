@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import ParseOpeningNameFromPGN from "@/HandleClickFunction/ParseOpeningNameFromPGN";
 import { useSelector } from "react-redux";
 import GenerateAIanalysisClick from "@/HandleClickFunction/GenerateAIanalysisClick";
+import { useDispatch } from "react-redux";
 type propstype = {
   setstate: Dispatch<SetStateAction<boolean>>
   accountname: string
@@ -12,6 +13,7 @@ type propstype = {
 const SelectedgamePGNPopup = ({ setstate, accountname }: propstype): ReactNode => {
   let openingname: string | null = ""
   const gamedata = useSelector((state: any) => state.gameinfo?.gameobject)
+  const dispatch = useDispatch()
   if (gamedata.pgn) {
     openingname = ParseOpeningNameFromPGN(gamedata.pgn)
     console.dir(gamedata)
@@ -67,7 +69,7 @@ const SelectedgamePGNPopup = ({ setstate, accountname }: propstype): ReactNode =
         <div className=" flex gap-3 self-end flex-wrap  justify-end mt-5 md:mt-8">
           <Button onClick={() => {
 
-            GenerateAIanalysisClick(userside, gamedata.pgn)
+            GenerateAIanalysisClick(userside, gamedata.pgn, dispatch)
 
 
           }} variant="contained" className="flex gap-3 h-12 justify-center items-center" color="success">
